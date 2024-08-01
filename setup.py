@@ -53,11 +53,11 @@ transformer_requirements = [
 
 setup(
     name="Crawl4AI",
-    version="0.2.74",
+    version="0.2.76",
     description="🔥🕷️ Crawl4AI: Open-source LLM Friendly Web Crawler & Scrapper",
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
-    url="https://github.com/unclecode/crawl4ai",
+    url="https://github.com/dylansheffer/crawl4ai",
     author="Unclecode",
     author_email="unclecode@kidocode.com",
     license="MIT",
