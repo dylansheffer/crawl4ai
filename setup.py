@@ -19,9 +19,37 @@ with open("requirements.txt") as f:
     requirements = f.read().splitlines()
 
 # Define the requirements for different environments
-default_requirements = [req for req in requirements if not req.startswith(("torch", "transformers", "onnxruntime", "nltk", "spacy", "tokenizers", "scikit-learn", "numpy"))]
-torch_requirements = [req for req in requirements if req.startswith(("torch", "nltk", "spacy", "scikit-learn", "numpy"))]
-transformer_requirements = [req for req in requirements if req.startswith(("transformers", "tokenizers", "onnxruntime"))]
+default_requirements = [
+    req
+    for req in requirements
+    if not req.startswith(
+        (
+            "torch",
+            "transformers",
+            "onnxruntime",
+            "nltk",
+            "spacy",
+            "tokenizers",
+            "scikit-learn",
+            "numpy",
+        )
+    )
+]
+
+# Ensure webdriver-manager is in default_requirements
+if not any(req.startswith("webdriver-manager") for req in default_requirements):
+    default_requirements.append("webdriver-manager>=4.0.2")
+
+torch_requirements = [
+    req
+    for req in requirements
+    if req.startswith(("torch", "nltk", "spacy", "scikit-learn", "numpy"))
+]
+transformer_requirements = [
+    req
+    for req in requirements
+    if req.startswith(("transformers", "tokenizers", "onnxruntime"))
+]
 
 setup(
     name="Crawl4AI",
@@ -41,8 +69,8 @@ setup(
         "all": requirements,
     },
     entry_points={
-        'console_scripts': [
-            'crawl4ai-download-models=crawl4ai.model_loader:main',
+        "console_scripts": [
+            "crawl4ai-download-models=crawl4ai.model_loader:main",
         ],
     },
     classifiers=[

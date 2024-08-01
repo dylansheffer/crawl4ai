@@ -11,3 +11,4 @@ rich
 selenium
 uvicorn
 chromedriver-autoinstaller
+webdriver-manager>=4.0.2
